@@ -8,12 +8,14 @@
    },
    "scripts": {
       "format": "prettier --write \"lib/**/*.ts\" \"test/**/*.ts\"",
-      "build": "tsc",
-      "dev": "tsc -w"
+      "build": "rimraf dist & tsc",
+      "dev": "rimraf dist & tsc -w",
+      "prebuild": "rimraf dist"
    },
    "dependencies": {},
    "devDependencies": {
       "prettier": "^1.19.1",
+      "rimraf": "^3.0.2",
       "typescript": "^3.8.3"
    },
    "repository": {
