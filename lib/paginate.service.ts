@@ -67,6 +67,14 @@ export class PaginateService {
          prev_page,
       };
 
+      if (this.options.showUrl) {
+         payload = {
+            ...payload,
+            next_page_url,
+            prev_page_url,
+         };
+      }
+
       return payload;
    }
 }
