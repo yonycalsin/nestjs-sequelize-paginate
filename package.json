@@ -1,0 +1,36 @@
+{
+   "name": "nestjs-sequelize-paginate",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "directories": {
+      "lib": "lib"
+   },
+   "scripts": {
+      "format": "prettier --write \"lib/**/*.ts\" \"test/**/*.ts\"",
+      "build": "tsc"
+   },
+   "dependencies": {},
+   "devDependencies": {
+      "prettier": "^1.19.1",
+      "typescript": "^3.8.3"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/yoicalsin/nestjs-sequelize-paginate.git"
+   },
+   "keywords": [
+      "nestjs",
+      "nest",
+      "sequelize",
+      "paginate",
+      "pagination",
+      "mysql"
+   ],
+   "author": "Yoni Calsin <helloyonicb@gmail.com>",
+   "license": "MIT",
+   "bugs": {
+      "url": "https://github.com/yoicalsin/nestjs-sequelize-paginate/issues"
+   },
+   "homepage": "https://github.com/yoicalsin/nestjs-sequelize-paginate#readme"
+}
