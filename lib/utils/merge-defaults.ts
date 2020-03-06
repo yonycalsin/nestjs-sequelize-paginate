@@ -6,6 +6,9 @@ const defaultOptions: PaginateModuleOptions = {
    showUrl: false,
    structure: 'simple',
    details: 'complete',
+   defaultPage: 1,
+   defaultOffset: 5,
+   showOffset: false,
 };
 
 export function MergeDefaults(
