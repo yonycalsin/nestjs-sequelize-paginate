@@ -1,78 +1,121 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Sequelize } from 'sequelize-typescript';
-import { PAGINATION_OPTIONS } from './paginate.constans';
-import {
-   PaginateOptionsI,
-   PaginateReturnI,
-   PaginateModuleOptionsI,
-} from './interfaces';
+import { PAGINATE_OPTIONS } from './paginate.constans';
+import { PaginateOptions, PaginateModuleOptions } from './interfaces';
+import { FindAndCountOptions } from 'sequelize/types';
 
 @Injectable()
 export class PaginateService {
    constructor(
-      @Inject(PAGINATION_OPTIONS)
-      private options: PaginateModuleOptionsI,
+      @Inject(PAGINATE_OPTIONS)
+      private options: PaginateModuleOptions,
       private readonly sequelize: Sequelize,
    ) {}
 
-   async findAllPaginate({
-      page,
-      offset,
-      path,
-      modelName,
-      where = {},
-      allowOffset,
-      ...options
-   }: PaginateOptionsI): Promise<PaginateReturnI> {
-      const url = this.options.url;
+   async findAllPaginate(
+      options: PaginateOptions,
+      optionsSequelize: FindAndCountOptions = {},
+   ): Promise<any> {
+      let url = this.options.url;
+      const structure = this.options.structure;
+      const details = this.options.details;
+      const isComplete = details === 'complete';
 
-      if (!offset) {
-         throw new Error(
-            '[NestPaginate] El valor de offset no puede estas vacio !',
-         );
-      }
+      const modelName = options.model.name;
+
+      const offset = options.offset || null;
+      const page = options.page || null;
+      const path = options.path || null;
+      const allowOffset = options.showOffset || false;
       const end = page * offset;
       const start = end - offset;
 
+      let totalItems = 0;
+      let totalPages = 0;
+      const itemCount = offset;
+
+      // Pages
+      let nextPage = null;
+      let prevPage = null;
+
+      // Urls
+      let nextUrl = null;
+      let prevUrl = null;
+      let firstUrl = null;
+      let lastUrl = null;
+
+      // Aux
+      let aux: any;
+
+      // Data variables
+      let payload: { [key: string]: any } = {};
+      let items: any[] = [];
+
       const data = await this.sequelize.models[modelName].findAndCountAll({
-         ...where,
+         ...optionsSequelize,
          limit: offset,
          offset: start,
       });
 
-      const all_pages = Math.ceil(data.count / offset);
+      totalItems = data.count;
+      totalPages = Math.ceil(totalItems / offset);
+      items = data.rows;
 
-      let next_page = page + 1 <= all_pages ? page + 1 : null;
-      let prev_page = page - 1 >= 1 ? page - 1 : null;
+      aux = page + 1;
+      nextPage = aux <= totalPages ? aux : null;
+      aux = page - 1;
+      prevPage = aux >= 1 ? aux : null;
 
-      let next_page_url: any = next_page
-         ? `${url ? url : ''}${path}?page=${next_page}`
-         : null;
-      let prev_page_url = prev_page
-         ? `${url ? url : ''}${path}?page=${prev_page}`
-         : null;
+      url += path + '?page=';
+
+      firstUrl = url + 1;
+      lastUrl = url + totalPages;
+
+      nextPage && (nextUrl = url + nextPage);
+      prevPage && (prevUrl = url + prevPage);
 
       if (allowOffset) {
-         next_page && (next_page_url += '&offset=' + offset);
-         prev_page && (prev_page_url += '&offset=' + offset);
+         nextPage && (nextUrl += '&offset=' + offset);
+         prevPage && (prevUrl += '&offset=' + offset);
       }
 
-      let payload: PaginateReturnI = {
+      const meta = {
          page,
-         offset,
-         all_pages,
-         count_items: data.count,
-         items: data.rows,
-         next_page,
-         prev_page,
+         // offset,
+         // itemCount,
+         // totalItems,
+         // totalPages,
       };
 
-      if (this.options.showUrl) {
-         payload = {
-            ...payload,
-            next_page_url,
-            prev_page_url,
-         };
+      isComplete && (meta['offset'] = offset),
+         ((meta['totalItems'] = totalItems),
+         (meta['totalPages'] = totalPages),
+         (meta['itemCount'] = itemCount));
+
+      const links = {
+         nextUrl,
+         prevUrl,
+      };
+
+      isComplete &&
+         ((links['firstUrl'] = firstUrl), (links['lastUrl'] = lastUrl));
+
+      switch (structure) {
+         case 'segmented':
+            payload = {
+               meta,
+               links,
+               items,
+            };
+            break;
+         case 'simple':
+         default:
+            payload = {
+               ...meta,
+               ...links,
+               items,
+            };
+            break;
       }
 
       return payload;
