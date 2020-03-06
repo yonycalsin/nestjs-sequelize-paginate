@@ -2,14 +2,14 @@
    "name": "nestjs-sequelize-paginate",
    "version": "1.0.0",
    "description": "",
-   "main": "index.js",
+   "main": "index.ts",
    "directories": {
       "lib": "lib"
    },
    "scripts": {
       "format": "prettier --write \"lib/**/*.ts\" \"test/**/*.ts\"",
-      "build": "rimraf dist & tsc",
-      "dev": "rimraf dist & tsc -w",
+      "build": "yarn prebuild & tsc",
+      "dev": "yarn prebuild & tsc -w",
       "prebuild": "rimraf dist"
    },
    "dependencies": {},
