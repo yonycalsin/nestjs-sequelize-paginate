@@ -1,4 +1,4 @@
-import { WhereOptions, ModelCtor } from 'sequelize/types';
+import { ModelCtor } from 'sequelize/types';
 import { Model } from 'sequelize';
 
 interface MoreI {
@@ -11,15 +11,21 @@ export interface PaginateModuleOptions {
    showUrl?: boolean;
    structure?: 'simple' | 'segmented';
    details?: 'necessary' | 'complete';
+   defaultPage?: number;
+   defaultOffset?: number;
+   showOffset?: boolean;
 }
 
 export interface PaginateOptions {
    model?: ModelCtor<Model<any, any>>;
-   page: number;
+   page?: number;
    offset?: number;
    path?: string;
    url?: string;
    showOffset?: boolean;
+   showUrl?: boolean;
+   structure?: 'simple' | 'segmented';
+   details?: 'necessary' | 'complete';
 }
 export interface PaginateReturn extends MoreI {
    page: number;
