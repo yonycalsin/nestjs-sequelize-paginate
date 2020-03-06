@@ -1,29 +1,26 @@
 import { Module, DynamicModule } from '@nestjs/common';
 import { PaginateService } from './paginate.service';
-import {
-   PAGINATION_SERVICE_TOKEN,
-   PAGINATION_OPTIONS,
-} from './paginate.constans';
-import { PaginateModuleOptionsI } from './interfaces';
-import { mergeDefaults } from './utils';
+import { PAGINATE_SERVICE_TOKEN, PAGINATE_OPTIONS } from './paginate.constans';
+import { PaginateModuleOptions } from './interfaces';
+import { MergeDefaults } from './utils';
 
 @Module({
    providers: [
       {
          provide: PaginateService,
-         useExisting: PAGINATION_SERVICE_TOKEN,
+         useExisting: PAGINATE_SERVICE_TOKEN,
       },
    ],
    exports: [PaginateService],
 })
 export class PaginateModule {
-   static forRoot(options: PaginateModuleOptionsI = {}): DynamicModule {
-      options = mergeDefaults(options);
+   static forRoot(options: PaginateModuleOptions = {}): DynamicModule {
+      options = MergeDefaults(options);
       return {
          module: PaginateModule,
          providers: [
             {
-               provide: PAGINATION_OPTIONS,
+               provide: PAGINATE_OPTIONS,
                useValue: options,
             },
             PaginateService,
