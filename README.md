@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-🌾 Pagination helper method for Sequelize models
+🏳‍🌈 Pagination helper method for Sequelize models.
 </p>
 <p align="center" style="max-width: 450px; margin: auto;">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
