@@ -1,29 +1,30 @@
-import { FindAndCountOptions } from 'sequelize/types';
-import { ModuleMetadata, Type } from '@nestjs/common/interfaces';
+import { WhereOptions, ModelCtor } from 'sequelize/types';
+import { Model } from 'sequelize';
 
 interface MoreI {
    [key: string]: any;
 }
 
-export interface PaginateModuleOptionsI {
+export interface PaginateModuleOptions {
    isGlobal?: boolean;
    url?: string;
    showUrl?: boolean;
+   structure?: 'simple' | 'segmented';
+   details?: 'necessary' | 'complete';
 }
 
-export interface PaginateOptionsI extends MoreI {
-   modelName?: string;
-   where?: FindAndCountOptions;
+export interface PaginateOptions {
+   model?: ModelCtor<Model<any, any>>;
    page: number;
    offset?: number;
    path?: string;
    url?: string;
-   allowOffset?: boolean;
+   showOffset?: boolean;
 }
-export interface PaginateReturnI extends MoreI {
+export interface PaginateReturn extends MoreI {
    page: number;
    offset: number;
-   all_pages: number;
+   all_pages?: number;
    count_items: number;
    items: any;
    next_page?: number;
@@ -31,7 +32,7 @@ export interface PaginateReturnI extends MoreI {
    next_page_url?: string;
    prev_page_url?: string;
 }
-export interface PaginateQueryI {
+export interface PaginateQueryInterface {
    page: number;
    path: string;
    url: string;
