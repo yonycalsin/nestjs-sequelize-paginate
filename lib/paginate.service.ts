@@ -16,17 +16,25 @@ export class PaginateService {
       options: PaginateOptions,
       optionsSequelize: FindAndCountOptions = {},
    ): Promise<any> {
-      let url = this.options.url;
-      const structure = this.options.structure;
-      const details = this.options.details;
+      const iu = (a: any) => {
+         return a === undefined || a === null ? false : a;
+      };
+
+      let url = iu(options.url) || iu(this.options.url) || null;
+      const showUrl = iu(options.showUrl) || iu(this.options.showUrl) || null;
+      const structure =
+         iu(options.structure) || iu(this.options.structure) || null;
+      const details = iu(options.details) || iu(this.options.details) || null;
       const isComplete = details === 'complete';
 
       const modelName = options.model.name;
 
-      const offset = options.offset || null;
-      const page = options.page || null;
-      const path = options.path || null;
-      const allowOffset = options.showOffset || false;
+      const offset =
+         iu(options.offset) || iu(this.options.defaultOffset) || null;
+      const page = iu(options.page) || iu(this.options.defaultPage) || null;
+      const path = iu(options.path) || null;
+      const allowOffset =
+         iu(options.showOffset) || iu(this.options.showOffset) || null;
       const end = page * offset;
       const start = end - offset;
 
@@ -81,14 +89,13 @@ export class PaginateService {
 
       const meta = {
          page,
-         // offset,
-         // itemCount,
-         // totalItems,
-         // totalPages,
+         nextPage,
+         prevPage,
       };
 
-      isComplete && (meta['offset'] = offset),
-         ((meta['totalItems'] = totalItems),
+      isComplete &&
+         ((meta['offset'] = offset),
+         (meta['totalItems'] = totalItems),
          (meta['totalPages'] = totalPages),
          (meta['itemCount'] = itemCount));
 
@@ -104,17 +111,21 @@ export class PaginateService {
          case 'segmented':
             payload = {
                meta,
-               links,
                items,
             };
+            showUrl && (payload['links'] = links);
             break;
          case 'simple':
          default:
             payload = {
                ...meta,
-               ...links,
                items,
             };
+            showUrl &&
+               (payload = {
+                  ...payload,
+                  ...links,
+               });
             break;
       }
 
