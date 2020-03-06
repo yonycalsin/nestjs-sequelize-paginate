@@ -1,14 +1,16 @@
-import { PaginateModuleOptionsI } from '../interfaces';
+import { PaginateModuleOptions } from '../interfaces';
 
-const defaultOptions: PaginateModuleOptionsI = {
+const defaultOptions: PaginateModuleOptions = {
    isGlobal: true,
    url: null,
    showUrl: false,
+   structure: 'simple',
+   details: 'complete',
 };
 
-export function mergeDefaults(
-   options: PaginateModuleOptionsI,
-   defaults: PaginateModuleOptionsI = defaultOptions,
+export function MergeDefaults(
+   options: PaginateModuleOptions,
+   defaults: PaginateModuleOptions = defaultOptions,
 ) {
    return {
       ...defaults,
