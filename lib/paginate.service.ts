@@ -27,8 +27,6 @@ export class PaginateService {
       const details = iu(options.details) || iu(this.options.details) || null;
       const isComplete = details === 'complete';
 
-      const modelName = options.model.name;
-
       const offset =
          iu(options.offset) || iu(this.options.defaultOffset) || null;
       const page = iu(options.page) || iu(this.options.defaultPage) || null;
@@ -59,7 +57,7 @@ export class PaginateService {
       let payload: { [key: string]: any } = {};
       let items: any[] = [];
 
-      const data = await this.sequelize.models[modelName].findAndCountAll({
+      const data = await options.model.findAndCountAll({
          ...optionsSequelize,
          limit: offset,
          offset: start,
