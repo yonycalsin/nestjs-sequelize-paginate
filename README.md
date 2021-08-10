@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/yoicalsin/nestjs-sequelize-paginate" target="blank"><img src="https://i.ibb.co/rpDxRCs/nest-sequelize-paginate-1.png" width="120" alt="Nestjs Sequelize Paginate Logo" /></a>
+  <a href="https://github.com/yonycalsin/nestjs-sequelize-paginate" target="blank"><img src="https://i.ibb.co/rpDxRCs/nest-sequelize-paginate-1.png" width="120" alt="Nestjs Sequelize Paginate Logo" /></a>
 </p>
 
 <p align="center">
@@ -7,21 +7,21 @@
 </p>
 <p align="center" style="max-width: 450px; margin: auto;">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-   <a href="https://github.com/yoicalsin/nestjs-sequelize-paginate" title="All Contributors"><img src="https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square" /></a>
+   <a href="https://github.com/yonycalsin/nestjs-sequelize-paginate" title="All Contributors"><img src="https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-   <a href="https://github.com/yoicalsin/nestjs-sequelize-paginate"><img src="https://img.shields.io/spiget/stars/1000?color=brightgreen&label=Star&logo=github" /></a>
+   <a href="https://github.com/yonycalsin/nestjs-sequelize-paginate"><img src="https://img.shields.io/spiget/stars/1000?color=brightgreen&label=Star&logo=github" /></a>
    <a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
    <img src="https://img.shields.io/npm/v/nestjs-sequelize-paginate" alt="NPM Version" /></a>
    <a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
    <img src="https://img.shields.io/npm/l/nestjs-sequelize-paginate" alt="Package License" /></a>
    <a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
    <img src="https://img.shields.io/npm/dm/nestjs-sequelize-paginate" alt="NPM Downloads" /></a>
-   <a href="https://github.com/yoicalsin/nestjs-sequelize-paginate" target="_blank">
+   <a href="https://github.com/yonycalsin/nestjs-sequelize-paginate" target="_blank">
    <img src="https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_95.svg" alt="Coverage" /></a>
-   <a href="https://github.com/yoicalsin/nestjs-sequelize-paginate"><img src="https://img.shields.io/badge/Github%20Page-nestjs.sequelize.paginate-yellow?style=flat-square&logo=github" /></a>
-   <a href="https://github.com/yoicalsin"><img src="https://img.shields.io/badge/Author-Yoni%20Calsin-blueviolet?style=flat-square&logo=appveyor" /></a>
-   <a href="https://twitter.com/yoicalsin" target="_blank">
-   <img src="https://img.shields.io/twitter/follow/yoicalsin.svg?style=social&label=Follow"></a>
+   <a href="https://github.com/yonycalsin/nestjs-sequelize-paginate"><img src="https://img.shields.io/badge/Github%20Page-nestjs.sequelize.paginate-yellow?style=flat-square&logo=github" /></a>
+   <a href="https://github.com/yonycalsin"><img src="https://img.shields.io/badge/Author-Yoni%20Calsin-blueviolet?style=flat-square&logo=appveyor" /></a>
+   <a href="https://twitter.com/yonycalsin" target="_blank">
+   <img src="https://img.shields.io/twitter/follow/yonycalsin.svg?style=social&label=Follow"></a>
 </p>
 
 ## 🌐 Description
