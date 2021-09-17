@@ -1,1 +1,1 @@
-export * from './merge-defaults';
+export * from './merge-defaults'

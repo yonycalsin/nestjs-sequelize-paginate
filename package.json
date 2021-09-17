@@ -1,44 +1,44 @@
 {
-   "name": "nestjs-sequelize-paginate",
-   "version": "1.0.0",
-   "description": "🏳‍🌈 Pagination helper method for Sequelize models.",
-   "directories": {
-      "lib": "lib"
-   },
-   "scripts": {
-      "build": "yarn prebuild & tsc",
-      "dev": "yarn prebuild & tsc -w",
-      "prebuild": "rimraf dist",
-      "prettier": "prettier --ignore-path .gitignore \"**/*.{js,json,ts,md,yml}\"",
-      "check-format": "npm run prettier -- --list-different",
-      "format": "npm run prettier -- --write"
-   },
-   "files": [
-      "dist"
-   ],
-   "dependencies": {},
-   "devDependencies": {
-      "esbuild": "^0.12.28",
-      "prettier": "^2.2.0",
-      "rimraf": "^3.0.2",
-      "typescript": "^4.1.3"
-   },
-   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/yonycalsin/nestjs-sequelize-paginate.git"
-   },
-   "keywords": [
-      "nestjs",
-      "nest",
-      "sequelize",
-      "paginate",
-      "pagination",
-      "mysql"
-   ],
-   "author": "Yony Calsin",
-   "license": "MIT",
-   "bugs": {
-      "url": "https://github.com/yonycalsin/nestjs-sequelize-paginate/issues"
-   },
-   "homepage": "https://github.com/yonycalsin/nestjs-sequelize-paginate#readme"
+  "name": "nestjs-sequelize-paginate",
+  "version": "1.0.0",
+  "description": "🏳‍🌈 Pagination helper method for Sequelize models.",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "yarn prebuild & tsc",
+    "dev": "yarn prebuild & tsc -w",
+    "prebuild": "rimraf dist",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.{js,json,ts,md,yml}\"",
+    "check-format": "npm run prettier -- --list-different",
+    "format": "npm run prettier -- --write"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "esbuild": "^0.12.28",
+    "prettier": "^2.2.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yonycalsin/nestjs-sequelize-paginate.git"
+  },
+  "keywords": [
+    "nestjs",
+    "nest",
+    "sequelize",
+    "paginate",
+    "pagination",
+    "mysql"
+  ],
+  "author": "Yony Calsin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yonycalsin/nestjs-sequelize-paginate/issues"
+  },
+  "homepage": "https://github.com/yonycalsin/nestjs-sequelize-paginate#readme"
 }

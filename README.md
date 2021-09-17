@@ -2,19 +2,19 @@
 
 🏳‍🌈 Pagination helper method for Sequelize models.
 
-   <a href="https://github.com/yonycalsin/nestjs-sequelize-paginate"><img src="https://img.shields.io/spiget/stars/1000?color=brightgreen&label=Star&logo=github" /></a>
-   <a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
-   <img src="https://img.shields.io/npm/v/nestjs-sequelize-paginate" alt="NPM Version" /></a>
-   <a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
-   <img src="https://img.shields.io/npm/l/nestjs-sequelize-paginate" alt="Package License" /></a>
-   <a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
-   <img src="https://img.shields.io/npm/dm/nestjs-sequelize-paginate" alt="NPM Downloads" /></a>
-   <a href="https://github.com/yonycalsin/nestjs-sequelize-paginate" target="_blank">
-   <img src="https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_95.svg" alt="Coverage" /></a>
-   <a href="https://github.com/yonycalsin/nestjs-sequelize-paginate"><img src="https://img.shields.io/badge/Github%20Page-nestjs.sequelize.paginate-yellow?style=flat-square&logo=github" /></a>
-   <a href="https://github.com/yonycalsin"><img src="https://img.shields.io/badge/Author-Yoni%20Calsin-blueviolet?style=flat-square&logo=appveyor" /></a>
-   <a href="https://twitter.com/yonycalsin" target="_blank">
-   <img src="https://img.shields.io/twitter/follow/yonycalsin.svg?style=social&label=Follow"></a>
+<a href="https://github.com/yonycalsin/nestjs-sequelize-paginate"><img src="https://img.shields.io/spiget/stars/1000?color=brightgreen&label=Star&logo=github" /></a>
+<a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
+<img src="https://img.shields.io/npm/v/nestjs-sequelize-paginate" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
+<img src="https://img.shields.io/npm/l/nestjs-sequelize-paginate" alt="Package License" /></a>
+<a href="https://www.npmjs.com/nestjs-sequelize-paginate" target="_blank">
+<img src="https://img.shields.io/npm/dm/nestjs-sequelize-paginate" alt="NPM Downloads" /></a>
+<a href="https://github.com/yonycalsin/nestjs-sequelize-paginate" target="_blank">
+<img src="https://s3.amazonaws.com/assets.coveralls.io/badges/coveralls_95.svg" alt="Coverage" /></a>
+<a href="https://github.com/yonycalsin/nestjs-sequelize-paginate"><img src="https://img.shields.io/badge/Github%20Page-nestjs.sequelize.paginate-yellow?style=flat-square&logo=github" /></a>
+<a href="https://github.com/yonycalsin"><img src="https://img.shields.io/badge/Author-Yoni%20Calsin-blueviolet?style=flat-square&logo=appveyor" /></a>
+<a href="https://twitter.com/yonycalsin" target="_blank">
+<img src="https://img.shields.io/twitter/follow/yonycalsin.svg?style=social&label=Follow"></a>
 
 ## 🌐 Description
 
@@ -36,15 +36,15 @@ npm install -save nestjs-sequelize-paginate
 Once the installation process is complete, we can import the **PaginateModule** into the root **AppModule**
 
 ```ts
-import { Module } from '@nestjs/common';
-import { PaginateModule } from 'nestjs-sequelize-paginate';
+import { Module } from '@nestjs/common'
+import { PaginateModule } from 'nestjs-sequelize-paginate'
 
 @Module({
-   imports: [
-      PaginateModule.forRoot({
-         url: 'http://localhost:3000',
-      }),
-   ],
+  imports: [
+    PaginateModule.forRoot({
+      url: 'http://localhost:3000',
+    }),
+  ],
 })
 export class AppModule {}
 ```
@@ -67,47 +67,41 @@ The **forRoot()** method supports all the configuration properties exposed by th
 Sequelize implements the Active Record pattern. With this pattern, you use model classes directly to interact with the database. To continue the example, we need at least one model. Let's define the User Model.
 
 ```ts
-import { Injectable } from '@nestjs/common';
-import { PaginateService, PaginateOptions } from 'nestjs-sequelize-paginate';
-import { ModelUser } from 'src/models/user.model';
+import { Injectable } from '@nestjs/common'
+import { PaginateService, PaginateOptions } from 'nestjs-sequelize-paginate'
+import { ModelUser } from 'src/models/user.model'
 
 @Injectable()
 export class UserService {
-   constructor(private paginateService: PaginateService) {}
-   async findAll(options: PaginateOptions): Promise<any> {
-      const paginate = this.paginateService.findAllPaginate({
-         ...options,
-         model: ModelUser,
-         path: '/user',
-      });
-      return paginate;
-   }
+  constructor(private paginateService: PaginateService) {}
+  async findAll(options: PaginateOptions): Promise<any> {
+    const paginate = this.paginateService.findAllPaginate({
+      ...options,
+      model: ModelUser,
+      path: '/user',
+    })
+    return paginate
+  }
 }
 ```
 
 Next, let's look at the **UserModule:**
 
 ```ts
-import { Controller, Get, Res, HttpStatus } from '@nestjs/common';
-import { UserService } from './user.service';
-import { Response } from 'express';
-import {
-   PaginateQueryInterface,
-   PaginateQuery,
-} from 'nestjs-sequelize-paginate';
+import { Controller, Get, Res, HttpStatus } from '@nestjs/common'
+import { UserService } from './user.service'
+import { Response } from 'express'
+import { PaginateQueryInterface, PaginateQuery } from 'nestjs-sequelize-paginate'
 
 @Controller('user')
 export class UserController {
-   constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
-   @Get()
-   async getUsers(
-      @Res() res: Response,
-      @PaginateQuery('all') paginateQuery: PaginateQueryInterface,
-   ): Promise<any> {
-      const data = await this.userService.findAll(paginateQuery);
-      res.status(HttpStatus.OK).send(data);
-   }
+  @Get()
+  async getUsers(@Res() res: Response, @PaginateQuery('all') paginateQuery: PaginateQueryInterface): Promise<any> {
+    const data = await this.userService.findAll(paginateQuery)
+    res.status(HttpStatus.OK).send(data)
+  }
 }
 ```
 
@@ -133,8 +127,8 @@ Sass-colors is an open source project licensed by [MIT](LICENSE). You can grow t
 
 ## 🎩 Stay in touch
 
--  Author [Yony Calsin](https://github.com/yonycalsin)
--  Twitter [Yony Calsin](https://twitter.com/yonycalsin)
+- Author [Yony Calsin](https://github.com/yonycalsin)
+- Twitter [Yony Calsin](https://twitter.com/yonycalsin)
 
 ## 📜 License
 
