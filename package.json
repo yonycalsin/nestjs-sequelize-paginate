@@ -2,16 +2,16 @@
    "name": "nestjs-sequelize-paginate",
    "version": "1.0.0",
    "description": "🏳‍🌈 Pagination helper method for Sequelize models.",
-   "main": "dist/index.js",
-   "type": "dist/index.d.ts",
    "directories": {
       "lib": "lib"
    },
    "scripts": {
-      "format": "prettier --write \"lib/**/*.ts\" \"test/**/*.ts\"",
       "build": "yarn prebuild & tsc",
       "dev": "yarn prebuild & tsc -w",
-      "prebuild": "rimraf dist"
+      "prebuild": "rimraf dist",
+      "prettier": "prettier --ignore-path .gitignore \"**/*.{js,json,ts,md,yml}\"",
+      "check-format": "npm run prettier -- --list-different",
+      "format": "npm run prettier -- --write"
    },
    "files": [
       "dist"
