@@ -13,6 +13,9 @@
       "dev": "yarn prebuild & tsc -w",
       "prebuild": "rimraf dist"
    },
+   "files": [
+      "dist"
+   ],
    "dependencies": {},
    "devDependencies": {
       "prettier": "^2.2.0",
@@ -21,7 +24,7 @@
    },
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/yoicalsin/nestjs-sequelize-paginate.git"
+      "url": "git+https://github.com/yonycalsin/nestjs-sequelize-paginate.git"
    },
    "keywords": [
       "nestjs",
@@ -31,10 +34,10 @@
       "pagination",
       "mysql"
    ],
-   "author": "Yoni Calsin <helloyonicb@gmail.com>",
+   "author": "Yony Calsin",
    "license": "MIT",
    "bugs": {
-      "url": "https://github.com/yoicalsin/nestjs-sequelize-paginate/issues"
+      "url": "https://github.com/yonycalsin/nestjs-sequelize-paginate/issues"
    },
-   "homepage": "https://github.com/yoicalsin/nestjs-sequelize-paginate#readme"
+   "homepage": "https://github.com/yonycalsin/nestjs-sequelize-paginate#readme"
 }
